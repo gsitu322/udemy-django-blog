@@ -9,8 +9,7 @@ def starting_page(request):
 
 
 def posts(request):
-    return HttpResponse("Returns all the post")
-
+    return render(request, 'blog/all-post.html')
 
 def post_detail(request, slug):
     return HttpResponse(f"this is the slug {slug}")

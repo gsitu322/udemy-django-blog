@@ -1,0 +1,16 @@
+{% load static %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post.css" %}" />
+{%  endblock %}
+<li>
+    <article class="post">
+        <a href="">
+            <img src="{% static "images/mountains.jpg" %}" alt="mountain hiking"/>
+
+            <div class="post__content">
+                <h3>Mount Hiking</h3>
+                <p>There's nothing like the views when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!</p>
+            </div>
+        </a>
+    </article>
+</li>

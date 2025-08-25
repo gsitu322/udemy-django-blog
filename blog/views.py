@@ -1,13 +1,11 @@
 from django.shortcuts import render
-from http.client import HTTPResponse
-from django.template.loader import render_to_string
 from django.http import HttpResponse
 
 # Create your views here.
 
 
 def starting_page(request):
-   return HttpResponse("Hello, world. You're at the polls page.")
+    return render(request, 'blog/index.html')
 
 
 def posts(request):

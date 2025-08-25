@@ -6,7 +6,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def home(request):
+def starting_page(request):
    return HttpResponse("Hello, world. You're at the polls page.")
 
 
@@ -14,5 +14,5 @@ def posts(request):
     return HttpResponse("Returns all the post")
 
 
-def post(request, slug):
+def post_detail(request, slug):
     return HttpResponse(f"this is the slug {slug}")

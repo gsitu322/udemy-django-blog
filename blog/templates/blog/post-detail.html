@@ -6,30 +6,22 @@
 {%  endblock %}
 
 {% block title %}
-    The Post Title
+    {{ post.title }}
 {% endblock %}
 
 {% block content %}
     <section id="summary">
-        <h2>Post Title</h2>
+        <h2>{{ post.title }}</h2>
         <article>
-            <img src="{% static "images/mountains.jpg" %}" alt="Post Title"/>
-            <address>By Gordon</address>
+            <img src="{% static "images/"|add:post.image %}" alt="{{ post.title }}"/>
+            <address>By {{ post.author|title }}</address>
             <div>
-                Last Updated on <time>July 10th</time>
+                Last Updated on <time>{{ post.date|date:"d M Y" }}</time>
             </div>
         </article>
     </section>
 
     <main>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur convallis fringilla turpis, vitae blandit nulla blandit eu. Praesent ut sem maximus, vehicula augue id, varius justo. Morbi molestie ipsum et enim ornare, eu blandit libero condimentum. Suspendisse non ligula vel lorem fringilla cursus. Fusce tincidunt vel tellus at porttitor
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur convallis fringilla turpis, vitae blandit nulla blandit eu. Praesent ut sem maximus, vehicula augue id, varius justo. Morbi molestie ipsum et enim ornare, eu blandit libero condimentum. Suspendisse non ligula vel lorem fringilla cursus. Fusce tincidunt vel tellus at porttitor
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur convallis fringilla turpis, vitae blandit nulla blandit eu. Praesent ut sem maximus, vehicula augue id, varius justo. Morbi molestie ipsum et enim ornare, eu blandit libero condimentum. Suspendisse non ligula vel lorem fringilla cursus. Fusce tincidunt vel tellus at porttitor
-        </p>
+        {{ post.content|linebreaks }}
     </main>
 {% endblock %}

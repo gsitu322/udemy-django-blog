@@ -4,12 +4,12 @@
 {%  endblock %}
 <li>
     <article class="post">
-        <a href="{% url "post_detail" 'eewew-ewewew' %}">
-            <img src="{% static "images/mountains.jpg" %}" alt="mountain hiking"/>
+        <a href="{% url "post_detail" post.slug %}">
+            <img src="{% static "images/"|add:post.image %}" alt="{{ post.title }}"/>
 
             <div class="post__content">
-                <h3>Mount Hiking</h3>
-                <p>There's nothing like the views when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!</p>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.excerpt }}</p>
             </div>
         </a>
     </article>

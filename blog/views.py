@@ -33,6 +33,7 @@ class PostDetail(View):
             "post_tags": post.tags.all(),
             "comments": post.comments.all().order_by("-id"),
             "comment_form": CommentForm(),
+            'is_stored_post': True if post.id in request.session.get('stored_post', []) else False,
         })
 
     def post(self, request, slug):
@@ -51,4 +52,36 @@ class PostDetail(View):
             "post_tags": post.tags.all(),
             "comments": post.comments.all().order_by("-id"),
             "comment_form": comment_form,
+            'is_stored_post': True if post.id in request.session.get('stored_post', []) else False,
         })
+
+
+class ReadLater(View):
+    def get(self, request):
+        stored_post = request.session.get("stored_post")
+
+        context = {}
+
+        if stored_post is None:
+            context['stored_post'] = []
+            context['has_posts'] = False
+        else:
+            post = Post.objects.filter(id__in=stored_post)
+            context['stored_post'] = post
+            context['has_posts'] = True
+
+        return render(request, "blog/stored-posts.html", context)
+
+    def post(self, request):
+        post_id = int(request.POST.get("post_id"))
+
+        stored_post = request.session.get("stored_post")
+
+        if stored_post is None:
+            stored_post = []
+
+        if post_id not in stored_post:
+            stored_post.append(post_id)
+            request.session["stored_post"] = stored_post
+
+        return HttpResponseRedirect("/")

@@ -23,5 +23,7 @@ urlpatterns = [
 
     path("posts", views.AllPosts.as_view(), name="posts"),
 
+    path("post/read-later", views.ReadLater.as_view(), name="read_later"),
+
     path("post/<slug:slug>/", views.PostDetail.as_view(), name="post_detail"),
 ]

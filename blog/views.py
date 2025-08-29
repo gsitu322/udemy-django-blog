@@ -82,6 +82,8 @@ class ReadLater(View):
 
         if post_id not in stored_post:
             stored_post.append(post_id)
-            request.session["stored_post"] = stored_post
+        else:
+            stored_post.remove(post_id)
 
+        request.session["stored_post"] = stored_post
         return HttpResponseRedirect("/")

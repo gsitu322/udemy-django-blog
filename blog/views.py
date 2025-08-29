@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 def get_date(post):
@@ -14,5 +14,9 @@ def posts(request):
     return render(request, 'blog/all-post.html', {'all_posts': all_posts})
 
 def post_detail(request, slug):
-    post = Post.objects.get(slug=slug)
-    return render(request, 'blog/post-detail.html', {'post': post})
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'blog/post-detail.html', {
+        'post': post,
+        "post_tags": post.tags.all(),
+
+    })

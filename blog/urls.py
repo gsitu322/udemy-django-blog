@@ -19,9 +19,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.starting_page, name="starting_page"),
+    path("", views.StartingPageList.as_view(), name="starting_page"),
 
-    path("posts", views.posts, name="posts"),
+    path("posts", views.AllPosts.as_view(), name="posts"),
 
-    path("post/<slug:slug>/", views.post_detail, name="post_detail"),
+    path("post/<slug:slug>/", views.PostDetail.as_view(), name="post_detail"),
 ]

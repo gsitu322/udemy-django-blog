@@ -1,11 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from datetime import date
 from .models import Post
-
-# Create your views here.
-all_posts = [
-]
 
 def get_date(post):
     return post.get('date')
@@ -16,8 +10,9 @@ def starting_page(request):
 
 
 def posts(request):
+    all_posts = Post.objects.all().order_by("-date")
     return render(request, 'blog/all-post.html', {'all_posts': all_posts})
 
 def post_detail(request, slug):
-    post = next(post for post in all_posts if post['slug'] == slug)
+    post = Post.objects.get(slug=slug)
     return render(request, 'blog/post-detail.html', {'post': post})

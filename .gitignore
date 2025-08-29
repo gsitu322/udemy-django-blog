@@ -55,7 +55,7 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media/
+uploads/
 
 # If you are using Django migrations cache (safe to ignore pycache)
 **/migrations/**/__pycache__/
@@ -67,7 +67,7 @@ media/
 .vscode/
 .idea/
 
-# PyCharm project files
+# PyCharm project uploads
 *.iml
 *.iws
 *.ipr
